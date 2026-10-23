@@ -1,0 +1,54 @@
+[package]
+name = "snptu"
+version = "1.0.0"
+edition = "2024"
+license = "AGPL-3.0-only"
+description = "Screenshot, annotation, recording and conversion tool for Windows"
+repository = "https://github.com/sriaro/snptu"
+
+[[bin]]
+name = "Snptu"
+path = "src/main.rs"
+
+[dependencies]
+anyhow = "1.0.104"
+arboard = "3.6.1"
+bytemuck = "1.25.2"
+cosmic-text = "0.19.0"
+swash = "0.2.10"
+fontdue = "0.9.4"
+global-hotkey = "0.8.0"
+gif = "0.14"
+heic = "0.1.6"
+hayro-jpeg2000 = "0.4.1"
+resvg = "0.48.1"
+imagepipe = "0.5.1"
+image = { version = "0.25.10", default-features = false, features = ["png", "jpeg", "bmp", "webp", "gif", "tiff", "ico"] }
+rgb = "0.8"
+jxl-oxide = { version = "0.12.6", default-features = false }
+libmimalloc-sys = { version = "0.1.49", features = ["extended"] }
+mimalloc = "0.1.52"
+pollster = "1.0.1"
+softbuffer = "0.4.8"
+tiny-skia = "0.12.0"
+tray-icon = "0.26.1"
+unicode-segmentation = "1.13.3"
+wgpu = { version = "30.0.1", default-features = false, features = ["std", "parking_lot", "dx12", "wgsl"] }
+windows-core = "0.62.2"
+windows = { version = "0.62.2", features = ["Win32_Foundation", "Win32_Graphics_Gdi", "Win32_UI_WindowsAndMessaging", "Win32_System_ProcessStatus", "Win32_System_Threading", "Win32_System_Registry", "Win32_Security", "Win32_UI_Shell", "Win32_UI_Shell_Common", "Win32_System_Com", "Win32_System_SystemInformation", "Win32_Graphics_Dwm", "Win32_UI_Input_KeyboardAndMouse", "Win32_System_Power", "Win32_System_Diagnostics_Debug", "Win32_System_LibraryLoader", "Win32_UI_Controls", "Win32_UI_HiDpi", "Win32_Storage_FileSystem", "Win32_System_JobObjects", "Win32_Media_MediaFoundation", "Win32_System_DataExchange", "Win32_System_Memory", "Win32_Globalization", "Win32_System_Shutdown", "Win32_System_Diagnostics_ToolHelp", "Foundation", "Management_Deployment"] }
+winit = "0.30.13"
+zenwebp = "0.4.4"
+zenavif = { version = "0.1.6", default-features = false }
+fast_image_resize = "6.1.0"
+zenpixels = "0.2.16"
+moxcms = "0.8.1"
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+strip = true
+
+[build-dependencies]
+embed-resource = "3.0.12"
+tiny-skia = "0.12.0"
